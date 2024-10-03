@@ -1,0 +1,33 @@
+
+
+        const SizedBox(height: 20.0, width: 12.0),
+
+    //Primera Fila - Cards de dos columnas y una fila ( Repitiendo esto agregas mas card con esta disposicion)
+    Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 78.0,
+            decoration: BoxDecoration(
+              color: const Color(0xFF2a2a2a),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            margin: const EdgeInsets.only(left: 20.0),
+            child: const Center(child: Text('Tus me gusta', style: TextStyle(color: Colors.white ))),
+          ),
+        ),
+        const SizedBox(width: 15.0), // Espacio entre los contenedores
+        Container(
+          height: 78.0,
+          width: 240.0, 
+          decoration: BoxDecoration(
+            color: const Color(0xFF2a2a2a),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          margin: const EdgeInsets.only(right: 20.0),
+          child: const Center(child: Text('Tamaño card derecha', style: TextStyle(color: Colors.white))),
+        ),
+      ],
+    ),
+
+    const SizedBox(height: 12.0, width: 12.0),

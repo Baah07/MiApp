@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MainApp());
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+
+      debugShowCheckedModeBanner:false ,
+      home: Scaffold(
+
+       appBar: AppBar(
+        title: const Text('Primera App'),
+        leading:const Icon(Icons.menu), //icono menu
+        actions: const[
+          Icon(Icons.more_vert),
+          Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Icon(Icons.account_circle),
+          ),
+        ],
+        ),
+
+
+        body: ListView(
+          children: [
+            //Lista de 20 items, utilizando un ciclo for
+            for(var i=1; i <=30; i++) ListTile(
+  leading:const CircleAvatar(
+    backgroundColor: Colors.red,
+  ),
+  title: Text ('Item $i'),
+  subtitle: Text('subtitle $i'),
+  trailing: ElevatedButton(
+    onPressed:(){
+      //Accion del boton
+    },
+    child:const Text('Accion'),
+  ),
+),
+const SizedBox(height: 12.0),      
+
+],
+
+
+
+
+        ),
+
+
+
+      ),
+
+
+
+
+
+
+    );
+
+  }
+}

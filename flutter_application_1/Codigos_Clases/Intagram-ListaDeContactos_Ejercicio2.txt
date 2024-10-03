@@ -1,0 +1,211 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MainApp());
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4, // Número de pestañas
+        child: Scaffold(
+          backgroundColor: const Color(0xFF121212),
+          appBar: AppBar(
+            title: const Text(
+              'Usuario',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            leading: const Icon(
+              Icons.arrow_back_rounded,
+              color: Color.fromARGB(255, 255, 255, 255),
+              size: 35,
+            ),
+            backgroundColor: const Color(0xFF121212),
+            actions: const [],
+          ),
+          body: const UserList(),
+        ),
+      ),
+    );
+  }
+}
+
+class UserList extends StatefulWidget {
+  const UserList({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _UserListState createState() => _UserListState();
+}
+
+class _UserListState extends State<UserList> {
+  // Lista para mantener el estado de seguimiento (true = siguiendo, false = no siguiendo)
+  List<bool> isFollowing = List.generate(30, (index) => true);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        const SizedBox(height: 10.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(),
+          child: TabBar(
+            labelColor: Colors.white,
+            indicatorColor: Color.fromARGB(255, 255, 255, 255),
+            unselectedLabelColor: Color(0xB3FFFFFF),
+            tabs: [
+              Tab(text: '303 Seguidores'),
+              Tab(text: '1,963 Seguidos'),
+              Tab(text: '0 Suscripciones'),
+              Tab(text: 'Marcadas'),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+          child: SizedBox(
+            height: 42.0,
+            child: TextField(
+              style: const TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: const Color(0xFF22252A),
+                hintText: 'Buscar',
+                hintStyle: const TextStyle(
+                  color: Color(0xFF8D949F),
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                ),
+                prefixIcon: const Icon(Icons.search_outlined,
+                    color: Color(0xFF8D949F), size: 25),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+              onChanged: (query) {
+                // Aquí puedes implementar la lógica de búsqueda
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 15.0),
+        const ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Color.fromARGB(255, 180, 176, 176),
+            radius: 28,
+          ),
+          title: Text('Solicitudes de seguidores',
+              style: TextStyle(color: Colors.white)),
+          subtitle: Text('Aprueba o ignora las solicitudes',
+              style: TextStyle(color: Color.fromARGB(255, 149, 148, 148))),
+        ),
+        const Divider(
+          color: Color(0xFF26292E),
+          thickness: 0.8,
+          indent: 0,
+          endIndent: 0,
+        ),
+
+
+        const SizedBox(width: 15.0),
+        const SizedBox(
+          width: 240.0,
+          child: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              'Categorías',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ),
+
+        
+        const ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Color.fromARGB(255, 180, 176, 176),
+            radius: 25,
+          ),
+          title: Text('Cuentas que no sigues',
+              style: TextStyle(color: Colors.white)),
+          subtitle: Text('usuario y 69 más',
+              style: TextStyle(color: Color.fromARGB(255, 149, 148, 148))),
+        ),
+        
+            const ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Color.fromARGB(255, 180, 176, 176),
+            radius: 25,
+          ),
+          title: Text('Cuentas con las que menos interactuas',
+              style: TextStyle(color: Colors.white)),
+          subtitle: Text('usuario y 49 más',
+              style: TextStyle(color: Color(0xFF737478))),
+        ),
+        const Divider(
+          color: Color(0xFF26292E),
+          thickness: 0.8,
+          indent: 0,
+          endIndent: 0,
+        ),
+        const SizedBox(width: 15.0),
+        const SizedBox(
+          width: 240.0,
+          child: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              'Todos los seguidores',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ),
+        for (var i = 1; i <= 30; i++)
+          ListTile(
+            leading: const CircleAvatar(
+              backgroundColor: Color.fromARGB(255, 180, 176, 176),
+              radius: 28,
+            ),
+            title: Text('Usuario $i', style: const TextStyle(color: Colors.white)),
+            subtitle:
+                Text('Nombre $i', style: const TextStyle(color: Colors.grey)),
+            trailing: ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  isFollowing[i - 1] = !isFollowing[i - 1]; // Cambiar el estado
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: isFollowing[i - 1]
+                    ? const Color(0xFF22252A) // Color cuando sigue
+                    : const Color(0xFF0095f8), // Color cuando no sigue
+                foregroundColor: Colors.white,
+                minimumSize: const Size(60, 35),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+              ),
+              child: Text(isFollowing[i - 1] ? 'Dejar de seguir' : 'Seguir'),
+            ),
+            minVerticalPadding: 18,
+          ),
+        const SizedBox(height: 12.0),
+      ],
+    );
+  }
+}
