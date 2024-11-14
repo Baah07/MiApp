@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989793570887",
+    "project_id": "miapp-ddam",
+    "storage_bucket": "miapp-ddam.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989793570887:android:2306b4edb8a31ec0772162",
+        "android_client_info": {
+          "package_name": "com.example.flutter_aplication_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989793570887-12ngsd91cgoqaolr4hr0d94ro71tusrk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi7vQf97oxq4ISkcpIRcM9begWxbqVdvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989793570887-12ngsd91cgoqaolr4hr0d94ro71tusrk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
